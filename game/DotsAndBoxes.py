@@ -491,5 +491,3 @@ class DotsAndBoxes:
                     bestValue = boardValue
                     bestMove = move
             return bestMove
-
-            #i
