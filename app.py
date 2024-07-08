@@ -1,10 +1,8 @@
 from flask import Flask, jsonify, request, render_template
-# Ensure this import matches your file structure
 from game.DotsAndBoxes import DotsAndBoxes
 
 app = Flask(__name__)
 
-# Global game instance
 game = None
 
 
@@ -17,7 +15,7 @@ def index():
 def start_game():
     global game
     data = request.get_json()
-    width = data.get('width', 4)  # Default to 4x4 grid if not specified
+    width = data.get('width', 4) 
     height = data.get('height', 4)
     player = data.get('player', 0)
     game = DotsAndBoxes(height, width, player)
@@ -38,7 +36,6 @@ def make_move():
 
     successful = game.playMove(line_type, vPos, hPos, player)
     if successful:
-        # Consider returning the entire game state here
         game_state = game.exportToString()
         return jsonify({'successful': True, 'gameState': game_state, 'message': 'Move successful'})
     else:
