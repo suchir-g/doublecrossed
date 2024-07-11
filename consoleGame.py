@@ -52,7 +52,7 @@ def playGame():
         print(
             f"Scores - Player 0: {game.boxCounts[0]}, Player 1: {game.boxCounts[1]}")
 
-        # Check if extra turn is needed
+        # check if extra turn is needed
         if not box_completed:
             game.playerTurn = 1 - game.playerTurn
 

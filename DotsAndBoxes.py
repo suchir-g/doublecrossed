@@ -23,33 +23,33 @@ class DotsAndBoxes:
             # display horizontal lines and dots
             for j in range(self.width):
                 if j < self.width - 1:
-                    print('o', end='') 
+                    print('o', end='')
                     if self.horizontalLines[i][j] == 1:
-                        print('---', end='') 
+                        print('---', end='')
                     else:
                         print('   ', end='')
                 else:
-                    print('o') 
+                    print('o')
 
             if i < self.height - 1:
                 for j in range(self.width):
                     if j < self.width - 1:
                         if self.verticalLines[i][j] == 1:
-                            print('|', end='')  
+                            print('|', end='')
                         else:
-                            print(' ', end='') 
+                            print(' ', end='')
 
                         if self.boxes[i][j] == -1:
-                            print('   ', end='')  
+                            print('   ', end='')
                         elif self.boxes[i][j] == 0:
                             print(' 0 ', end='')  # human box
                         else:
                             print(' 1 ', end='')  # AI box
                     else:
                         if self.verticalLines[i][j] == 1:
-                            print('|')  
+                            print('|')
                         else:
-                            print(' ')  
+                            print(' ')
 
     # these are just helper functions to facilitate conversion if i do decide to link to a website
 
@@ -107,7 +107,8 @@ class DotsAndBoxes:
         # detect if any boxes were completed by this move by using the predetermined function
         boxesCompleted = self.countBoxesCompleted(lineType, vPos, hPos)
         if boxesCompleted > 0:
-            self.detectBoxesAndAddPoints(player) # adds points since it's still a move we have to add to the game state
+            # adds points since it's still a move we have to add to the game state
+            self.detectBoxesAndAddPoints(player)
         return boxesCompleted > 0
 
     def detectBoxesAndAddPoints(self, player):
@@ -304,7 +305,7 @@ class DotsAndBoxes:
     def minimax(self, depth, alpha, beta, maximizingPlayer):
 
         # this is a simple minimax algorithm with alpha beta pruning
-        # https://www.geeksforgeeks.org/minimax-algorithm-in-game-theory-set-4-alpha-beta-pruning/ 
+        # https://www.geeksforgeeks.org/minimax-algorithm-in-game-theory-set-4-alpha-beta-pruning/
         # we need to also remember in this minimax that when you get a box, you get an extra turn, something which isn't there in most turn based games
 
         if depth == 0 or self.isGameOver():
@@ -367,7 +368,7 @@ class DotsAndBoxes:
             self.horizontalLines[vPos][hPos] = 0
         self.playerTurn = 1 - self.playerTurn
 
-    # to check if we've reached the terminal state, we can just check if every line has been filled. 
+    # to check if we've reached the terminal state, we can just check if every line has been filled.
     # if every line has been filled, then we have grounds to stop the game
 
     def isGameOver(self):
